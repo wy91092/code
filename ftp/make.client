@@ -1,0 +1,2 @@
+client:ftp_client.c ftp_func.c ftp.h
+	gcc -g -o client ftp_client.c ftp_func.c

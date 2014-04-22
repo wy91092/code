@@ -1,0 +1,2 @@
+server:ftp_func.c ftp_server.c ftp.h
+	gcc -g -o server ftp_func.c ftp_server.c -lpthread
