@@ -17,7 +17,6 @@ class Producer:public Thread
 	  int _p_sleep;
    public:
       Producer(Queue *p_queue,int p_sleep);
-      virtual ~Producer();
 	   void run();
 };
 #endif

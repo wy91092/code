@@ -17,7 +17,7 @@ class Thread
  public:
 	 //int _sleep;
     Thread();
-	~Thread();
+    virtual	~Thread();
 	virtual void run() =0;
     void start();
 	static void *thread_func(void*arg);

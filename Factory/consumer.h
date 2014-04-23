@@ -17,7 +17,6 @@ class Consumer:public Thread
 		Queue *_p_queue;
 	public:
 		Consumer(Queue *p_queue,int c_sleep);
-		virtual ~Consumer();
 		void run();
 };
 #endif

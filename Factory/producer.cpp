@@ -13,10 +13,6 @@ Producer::Producer(Queue *p_queue,int p_sleep):_p_queue(p_queue),_p_sleep(p_slee
 {
   
 }
-Producer::~Producer()
-{
-
-}
 void Producer::run()
 {
     while(true)

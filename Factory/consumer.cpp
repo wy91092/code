@@ -13,7 +13,6 @@ Consumer::Consumer(Queue *p_queue,int c_sleep):_p_queue(p_queue),_c_sleep(c_slee
 {
 	srand(10001);
 }
-Consumer::~Consumer(){}
 void Consumer::run()
 {
    while(true)
