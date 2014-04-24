@@ -7,7 +7,7 @@
 #include"expression.h"
 using namespace std;
 
-string getPostfixExp(string &infix)
+string getPostfixExp(string &infix)  //获取后缀表达式
 {
   stack<char> operator_stack;
   string postfix;
@@ -49,7 +49,7 @@ string getPostfixExp(string &infix)
      postfix.push_back(' ');
 	 operator_stack.pop();
   }
-  postfix[postfix.size()-1]=' ';
+  postfix[postfix.size()-1]=' '; //将最后一位置为空格
   return postfix;
 }
 
@@ -67,7 +67,7 @@ bool isOperator(char ch)
   }
 }
 
-int priority(char a)
+int priority(char a)   //运算符优先级
 {
    int temp;
    if(a=='*'||a=='/')
@@ -77,7 +77,7 @@ int priority(char a)
    return temp;
 }
 
-int postfixCalculate(string &postfix)
+int postfixCalculate(string &postfix)   //后缀表达所求值
 {
    int first, second;
    stack<int> num_stack;
@@ -113,7 +113,7 @@ int postfixCalculate(string &postfix)
    return result;
 }
 
-void getTwoNums(stack<int> &num_stack, int &first, int &second)
+void getTwoNums(stack<int> &num_stack, int &first, int &second) //获取需要计算的2个数
 {
    second=num_stack.top();
    num_stack.pop();
