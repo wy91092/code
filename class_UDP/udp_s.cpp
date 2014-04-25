@@ -46,7 +46,6 @@ void Udp_s::receive()
 {
   socklen_t len=sizeof(client_addr);
   recvfrom(server_fd,recv_buf,128, 0,(struct sockaddr*)&client_addr,&len);
-  char ip[32]="";
   printf("%s\n",recv_buf);
 
 }
