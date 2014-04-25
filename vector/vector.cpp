@@ -11,21 +11,21 @@ MyVector::MyVector()
 {
 	_size=0;
 	_capacity=0;
-	_array=new int[_capacity]; 
+	_array=new int[_capacity](); 
 }
 
 MyVector::MyVector(int capacity)
 {
 	_size=0;
 	_capacity=capacity;
-	_array=new int[_capacity];
+	_array=new int[_capacity]();
 }
 
 MyVector::MyVector(int *begin, int *end)
 {
 	_size=0;
 	_capacity=(end-begin);
-    _array=new int[_capacity]; 
+    _array=new int[_capacity](); 
 	for(int i=0;i<(end-begin);i++)
 	{
 		_array[i]=begin[i];
@@ -37,7 +37,7 @@ MyVector::MyVector(const MyVector &other)
 {
 	_size=other._size;
 	_capacity=other._capacity;
-	_array=new int[_capacity];
+	_array=new int[_capacity]();
 	for(int i=0;i<_size;i++)
 	{
 		_array[i]=other._array[i];
@@ -58,7 +58,7 @@ MyVector &MyVector::operator=(const MyVector &other)
 		if(i<_size-1)
 		{
 			delete []_array;
-			_array=new int[other._capacity];
+			_array=new int[other._capacity]();
 			for( i=0;i<other._size;i++)
 			{
 				_array[i]=other._array[i];
@@ -68,7 +68,7 @@ MyVector &MyVector::operator=(const MyVector &other)
 	else
 	{
 		delete []_array;
-		_array=new int[other._capacity];
+		_array=new int[other._capacity]();
 		for( i=0;i<other._size;i++)
 		{
 			_array[i]=other._array[i];
@@ -77,16 +77,16 @@ MyVector &MyVector::operator=(const MyVector &other)
 	}
 	return *this;
 }
-int MyVector::operator[](int num)
+int& MyVector::operator[](const int num)
 {
 	return _array[num];
 }
-void MyVector::push_back(int num)
+void MyVector::push_back(const int num)
 {
     if(_capacity==0)
 	{ 
 		++_capacity;
-		_array=new int[_capacity];
+		_array=new int[_capacity]();
 	}
 		if(_size<_capacity)
 	{
@@ -101,7 +101,7 @@ void MyVector::push_back(int num)
 		}
 		delete []_array;
 		_capacity=_capacity*2;
-		_array=new int[_capacity];
+		_array=new int[_capacity]();
 		for(int i=0;i<_capacity/2;i++)
 		{
 			_array[i]=tmp._array[i];
@@ -110,15 +110,15 @@ void MyVector::push_back(int num)
 	}
 	++_size;
 }
-int MyVector::size()
+const int MyVector::size() const
 {
 	return _size;
 }
-int MyVector::capacity()
+const int MyVector::capacity() const
 {
 	return _capacity;
 }
-void MyVector::insert(int pos , int num)
+void MyVector::insert(const int pos ,const int num)
 {
 	if(_size<_capacity)
 	{
@@ -137,7 +137,7 @@ void MyVector::insert(int pos , int num)
 		}
 		delete []_array;
 		_capacity=2*_capacity;
-		_array=new int[_capacity];
+		_array=new int[_capacity]();
 		for(int i=0;i<_capacity/2;i++)
 		{
 			_array[i]=tmp._array[i];
@@ -152,5 +152,15 @@ void MyVector::insert(int pos , int num)
 }
 MyVector::~MyVector()
 {
+	if(_capacity==1)
+	{
+	  delete _array;
+	}
+	else if(_capacity>1)
+	{
 	delete []_array;
+    }
+	_array=NULL;
+	_size=0;
+	_capacity=0;
 }

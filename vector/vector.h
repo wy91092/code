@@ -24,13 +24,13 @@ class MyVector
      ~MyVector();
 
 	  MyVector &operator=(const MyVector &);
-	  int operator[](int);
+	  int& operator[](const int);
 
        
-	  void push_back(int );
-	  int size();
-	  int capacity();
-	  void insert(int, int);
+	  void push_back(const int );
+	 const int size() const;
+	 const int capacity() const;
+	  void insert(const int,const int);
 };
 
 #endif
